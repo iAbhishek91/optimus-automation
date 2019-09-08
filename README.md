@@ -1,6 +1,6 @@
-# Optimus-Automation
+# Optimizing automation framework creation
 
-Simple automation framework for UI and API testing in BDD style.
+Simple automation framework utility using Node JS. Suitable for creating any UI and API test framework.
 
 ## Installation
 
@@ -8,5 +8,5 @@ Simple automation framework for UI and API testing in BDD style.
 npm install optimus-automation --save
 ```
 
-## Why again another framework
+## Why again another framework utility
 
