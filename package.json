@@ -2,7 +2,7 @@
   "name": "optimus-automation",
   "version": "1.0.1",
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "lint": "eslint src"
