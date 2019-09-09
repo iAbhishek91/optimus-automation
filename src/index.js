@@ -1,3 +1,5 @@
-import { args } from 'yargs';
+import * as logger from './support/logger';
+import request from './support/request';
+import utility from './utility';
 
-export default () => `Argument passed: ${args}`;
+export { logger, request, utility };

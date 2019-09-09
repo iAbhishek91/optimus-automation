@@ -3,8 +3,15 @@
   "version": "1.0.2",
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
   "main": "dist/index.js",
+  "bin": {
+    "start-test": "./bin/start-test.js",
+    "report": "./bin/report.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "rm -rf dist && babel src -d dist",
     "lint": "eslint src"
   },
   "repository": {
@@ -15,6 +22,7 @@
     "automation",
     "webdriverio",
     "cucumber",
+    "CLI",
     "BDD",
     "API-testing",
     "UI-testing"
@@ -37,6 +45,10 @@
     "eslint-plugin-jsx-a11y": "^6.2.3"
   },
   "dependencies": {
-    "yargs": "^14.0.0"
+    "command-line-args": "^5.1.1",
+    "cross-spawn": "^7.0.0",
+    "cucumber-html-reporter": "^5.0.2",
+    "request": "^2.88.0",
+    "winston": "^3.2.1"
   }
 }
