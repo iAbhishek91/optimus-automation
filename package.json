@@ -1,6 +1,6 @@
 {
   "name": "optimus-automation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
   "main": "dist/index.js",
   "bin": {
