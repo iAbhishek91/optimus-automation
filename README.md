@@ -60,12 +60,12 @@ npm install optimus-automation --save
   
     Refer [default configuration file](https://github.com/iAbhishek91/optimus-automation/blob/master/src/config/default.js).
 
-* **Selenium standalone** in-built. `Selenium-standalone` is one of the core module used for browser automation. [Selenium standalone](https://github.com/vvo/selenium-standalone) APIs are used to implement installation and starting of selenium server.
+* **Selenium standalone** in-built. `selenium-standalone` is one of the core module used for browser automation. [Selenium standalone](https://github.com/vvo/selenium-standalone) APIs are used to implement installation and starting of selenium server.
 
   Selenium-standalone helps you to install(download) selenium-standalone jar(java archive) file and other supporting browser drivers. It also help you to start the selenium-server.
 
   CLI options and configurations of `selenium` is mentioned here. <<>>
 
-  Learn about `Selenium-standalone` API implementation from [/src/modules/selenium-standalone](https://github.com/iAbhishek91/optimus-automation/tree/master/src/modules/selenium-standalone).
+  Learn about `selenium-standalone` API implementation from [/src/modules/selenium-standalone](https://github.com/iAbhishek91/optimus-automation/tree/master/src/modules/selenium-standalone).
 
   > NOTE: Don't get confuse with selenium-webdriver with selenium-standalone. Selenium-standalone is just a server used as an interface between `webdriver-io` and your browser. If you are using [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) instead of [webdriver-io](https://www.npmjs.com/package/webdriverio), then use of selenium-standalone is optional. Two know the difference between selenium-webdriver and selenium-standalone refer [seleniumhq.org](https://www.seleniumhq.org/docs/03_webdriver.jsp#webdriver-and-the-selenium-server).
