@@ -13,7 +13,7 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _fs = _interopRequireDefault(require("fs"));
 
-var _logger = require("../support/logger");
+var _logger = require("../modules/logger");
 
 /**
  * @description this function creates a directory from

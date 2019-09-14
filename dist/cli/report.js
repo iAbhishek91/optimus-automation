@@ -2,15 +2,15 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _commandLineArgs = _interopRequireDefault(require("command-line-args"));
+var _commandLineArgs2 = _interopRequireDefault(require("command-line-args"));
 
 var _fs = require("fs");
 
-var _parseConfig = _interopRequireDefault(require("../config/parseConfig"));
+var _parseReportConfig = _interopRequireDefault(require("../config/parseReportConfig"));
 
 var _logAndThrowError = _interopRequireDefault(require("../logAndThrowError"));
 
-var _htmlReportGenerator = _interopRequireDefault(require("../support/cucumber/htmlReportGenerator"));
+var _htmlReportGenerator = _interopRequireDefault(require("../modules/cucumber/htmlReportGenerator"));
 
 var _constants = require("../constants");
 
@@ -21,17 +21,18 @@ if ((0, _fs.existsSync)(_constants.CONFIG_FILE)) {
   var config = require(_constants.CONFIG_FILE); // eslint-disable-line
 
 
-  optionDefinitions = (0, _parseConfig["default"])(config);
+  optionDefinitions = (0, _parseReportConfig["default"])(config);
 } else {
   (0, _logAndThrowError["default"])(noConfigErrMsg);
 }
 
 try {
-  var options = (0, _commandLineArgs["default"])(optionDefinitions);
-  var _options$CONFIG_GROUP = options[_constants.CONFIG_GROUPS.framework],
-      isReportsPersistent = _options$CONFIG_GROUP.isReportsPersistent,
-      outputDir = _options$CONFIG_GROUP.outputDir;
-  (0, _htmlReportGenerator["default"])(isReportsPersistent, outputDir, options[_constants.CONFIG_GROUPS.cucumber].reportName);
+  var _commandLineArgs = (0, _commandLineArgs2["default"])(optionDefinitions),
+      isReportsPersistent = _commandLineArgs.isReportsPersistent,
+      outputDir = _commandLineArgs.outputDir,
+      reportName = _commandLineArgs.reportName;
+
+  (0, _htmlReportGenerator["default"])(isReportsPersistent, outputDir, reportName);
 } catch (error) {
   (0, _logAndThrowError["default"])(error);
 }

@@ -1,8 +1,8 @@
 import commandLineArgs from 'command-line-args';
 import { existsSync } from 'fs';
-import parseReportConfig from '../config/parseReportConfig';
+import parseSeleniumConfig from '../config/parseSeleniumConfig';
 import logAndThrowError from '../logAndThrowError';
-import htmlReportGenerator from '../modules/cucumber/htmlReportGenerator';
+import seleniumInstall from '../modules/selenium-standalone/install';
 import { CONFIG_FILE } from '../constants';
 
 let optionDefinitions;
@@ -12,23 +12,15 @@ const noConfigErrMsg = `No configuration file found! Please define "${CONFIG_FIL
 if (existsSync(CONFIG_FILE)) {
   const config = require(CONFIG_FILE); // eslint-disable-line
 
-  optionDefinitions = parseReportConfig(config);
+  optionDefinitions = parseSeleniumConfig(config);
 } else {
   logAndThrowError(noConfigErrMsg);
 }
 
 try {
-  const {
-    isReportsPersistent,
-    outputDir,
-    reportName,
-  } = commandLineArgs(optionDefinitions);
+  const options = commandLineArgs(optionDefinitions);
 
-  htmlReportGenerator(
-    isReportsPersistent,
-    outputDir,
-    reportName,
-  );
+  seleniumInstall(options);
 } catch (error) {
   logAndThrowError(error);
 }

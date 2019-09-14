@@ -8,15 +8,15 @@ var _commandLineArgs = _interopRequireDefault(require("command-line-args"));
 
 var _fs = require("fs");
 
-var _parseConfig = _interopRequireDefault(require("../config/parseConfig"));
+var _parseStartTestConfig = _interopRequireDefault(require("../config/parseStartTestConfig"));
 
-var _logger = require("../support/logger");
+var _logger = require("../modules/logger");
 
 var _logAndThrowError = _interopRequireDefault(require("../logAndThrowError"));
 
-var _start = _interopRequireDefault(require("../support/cucumber/start"));
+var _start = _interopRequireDefault(require("../modules/cucumber/start"));
 
-var _eventListener = _interopRequireDefault(require("../support/cucumber/eventListener"));
+var _eventListener = _interopRequireDefault(require("../modules/cucumber/eventListener"));
 
 var _constants = require("../constants");
 
@@ -31,9 +31,9 @@ if ((0, _fs.existsSync)(_constants.CONFIG_FILE)) {
   var config = require(_constants.CONFIG_FILE); // eslint-disable-line
 
 
-  optionDefinitions = (0, _parseConfig["default"])(config);
+  optionDefinitions = (0, _parseStartTestConfig["default"])(config);
 
-  _logger.logger.info(optionDefinitions);
+  _logger.logger.info(JSON.stringify(optionDefinitions));
 } else {
   (0, _logAndThrowError["default"])(noConfigErrMsg);
 }

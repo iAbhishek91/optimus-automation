@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { logger } from '../support/logger';
+import { logger } from '../modules/logger';
 
 /**
  * @description this function creates a directory from

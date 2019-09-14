@@ -1,10 +1,10 @@
 import commandLineArgs from 'command-line-args';
 import { existsSync } from 'fs';
-import parseConfig from '../config/parseConfig';
-import { logger } from '../support/logger';
+import parseStartTestConfig from '../config/parseStartTestConfig';
+import { logger } from '../modules/logger';
 import logAndThrowError from '../logAndThrowError';
-import startCucumber from '../support/cucumber/start';
-import cucumberEventListener from '../support/cucumber/eventListener';
+import startCucumber from '../modules/cucumber/start';
+import cucumberEventListener from '../modules/cucumber/eventListener';
 import { CONFIG_FILE, CONFIG_GROUPS } from '../constants';
 
 let optionDefinitions;
@@ -14,9 +14,9 @@ const noConfigErrMsg = `No configuration file found! Please define "${CONFIG_FIL
 if (existsSync(CONFIG_FILE)) {
   const config = require(CONFIG_FILE); // eslint-disable-line
 
-  optionDefinitions = parseConfig(config);
+  optionDefinitions = parseStartTestConfig(config);
 
-  logger.info(optionDefinitions);
+  logger.info(JSON.stringify(optionDefinitions));
 } else {
   logAndThrowError(noConfigErrMsg);
 }

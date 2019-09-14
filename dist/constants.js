@@ -9,6 +9,7 @@ exports.CONFIG_FILE = CONFIG_FILE;
 var CONFIG_GROUPS = {
   custom: 'customOptions',
   framework: 'frameworkOptions',
+  selenium: 'seleniumOptions',
   cucumber: 'cucumberOptions'
 };
 exports.CONFIG_GROUPS = CONFIG_GROUPS;

@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "bin": {
     "start-test": "./bin/start-test.js",
-    "report": "./bin/report.js"
+    "report": "./bin/report.js",
+    "selenium-install": "./bin/selenium-install.js",
+    "selenium-start": "./bin/selenium-start.js"
   },
   "publishConfig": {
     "access": "public"
@@ -49,6 +51,7 @@
     "cross-spawn": "^7.0.0",
     "cucumber-html-reporter": "^5.0.2",
     "request": "^2.88.0",
+    "selenium-standalone": "^6.16.0",
     "winston": "^3.2.1"
   }
 }
