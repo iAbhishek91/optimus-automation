@@ -1,6 +1,8 @@
 # Optimizing automation framework creation
 
-## Problem statement
+## About
+
+### Problem statement
 
 There are multiple frameworks or boilerplate code available which can help you to kick start with your test automation project. But it's not about getting your job done!!!
 
@@ -16,13 +18,19 @@ Couple of reasons to support:
 
 In reality, we tend to download code from internet and try to achieve our goals. Mostly because of complexity or lack of understanding or time.
 
-With help of this module we are trying to help and coach engineers who wants to create an automation project from scratch. It's really simple! Once you understand every bit of it go ahead and use the module.
+With help of this module we are trying to help and coach engineers who wants to create an test automation project from scratch. It's really simple! Once you understand every bit of it go ahead and use the module.
 
-## Before you start
+### Scope
+
+Engineers who want to perform browser based Ui testing, API testing etc... can use this module to learn and save time.
+
+Refer [features section](https://github.com/iAbhishek91/optimus-automation#features) for details list of features provided.
+
+### Before you start
 
 **[Optimus automation](https://github.com/iAbhishek91/optimus-automation)** is structured in multiple modules. We suggest you to understand the modules you are interested in and their core concepts. Each module comes with detail documentation which can be co-related with their official documentation.
 
-Each module is independent of each other resulting in a loose-coupled system. Hence provides flexibility to learn and use one or few modules.
+Each module is independent of each other resulting in a loose-coupled system. Hence provides flexibility to learn and use one or few all modules as per requirement.
 
 For any suggestion, doubts or contribution, please feel free to raise issues on [GitHub](https://github.com/iAbhishek91/optimus-automation/issues). We will try to respond ASAP.
 
@@ -44,11 +52,11 @@ npm install optimus-automation --save
 
   > NOTE: `cucumber-js` is not an dependency for this framework. Instead `cucumber-js` required as a dependency on the framework/project consuming it.
 
-* **Three layer configuration**: This module processes three type of configurations: **CLI**, **/.optimusrc.js** and **default inbuilt configuration**. These configurations are consumed directly by the core modules. Details about all the CLI options are mentioned below<<provide reference>>.
+* **Three layer configuration**: This module processes three type of configurations namely **CLI**, **.optimusrc.js** and **default configuration**. These configurations are consumed directly by the core modules. Details about all the CLI options are mentioned <<provide reference>>.
 
-  * **CLI** configurations can be passed from CLI. This provide flexibility for passing parameter to the modules. Configurations are transformed internally to command line arguments using `command-line-args` module.
+  * **CLI** configurations can be passed from CLI. Providing flexibility for passing parameter to the modules using command prompt. CLI options are processed into command line arguments using [command-line-args](https://www.npmjs.com/package/command-line-args) module.
   
-    CLI has highest priority and will override the values passed from .optimusrc.js or default inbuilt configuration.
+    CLI has highest priority and will override the values passed from .optimusrc.js or default configuration.
 
   * **.optimusrc.js** is a configuration file kept at root of the project. This file exports an object containing configuration object specific to modules. Refer an example of full [/.optimusrc.js](https://github.com/iAbhishek91/boilerplate-optimus-automation/blob/master/.optimusrc.js) config file.
   
@@ -56,7 +64,7 @@ npm install optimus-automation --save
   
     > NOTE: .optimusrc.js file has the second priority in the list.
 
-  * **default inbuilt configuration** is the hard-coded default configuration file. These values are used in case they are not passed from CLI or .optimusrc.js. Structure of default inbuilt configuration file are same as .optimusrc.js.
+  * **default configuration** is the hard-coded configuration file. These values are used in case they are not passed from CLI or .optimusrc.js. Structure of default-configuration file are same as .optimusrc.js.
   
     Refer [default configuration file](https://github.com/iAbhishek91/optimus-automation/blob/master/src/config/default.js).
 
@@ -68,4 +76,4 @@ npm install optimus-automation --save
 
   Learn about `selenium-standalone` API implementation from [/src/modules/selenium-standalone](https://github.com/iAbhishek91/optimus-automation/tree/master/src/modules/selenium-standalone).
 
-  > NOTE: Don't get confuse with selenium-webdriver with selenium-standalone. Selenium-standalone is just a server used as an interface between `webdriver-io` and your browser. If you are using [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) instead of [webdriver-io](https://www.npmjs.com/package/webdriverio), then use of selenium-standalone is optional. Two know the difference between selenium-webdriver and selenium-standalone refer [seleniumhq.org](https://www.seleniumhq.org/docs/03_webdriver.jsp#webdriver-and-the-selenium-server).
+  > NOTE: Don't get confuse with selenium-webdriver with selenium-standalone. Selenium-standalone is just a server used as an interface between `webdriver-io` and your browser. If you are using [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) instead of [webdriver-io](https://www.npmjs.com/package/webdriverio), then use of selenium-standalone is optional. To know more about selenium-webdriver and selenium-standalone refer [seleniumhq.org](https://www.seleniumhq.org/docs/03_webdriver.jsp#webdriver-and-the-selenium-server).
