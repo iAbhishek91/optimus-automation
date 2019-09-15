@@ -36,6 +36,7 @@ let mainOptions;
   } catch (error) {
     logger.error(error);
     logger.info(usage);
+    throw new Error(error);
   }
 
   switch (mainOptions.command) {
