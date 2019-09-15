@@ -1,30 +1,13 @@
 #!/usr/bin/env node
 
 const commandLineArgs = require('command-line-args');
+const commandLineUsage = require('command-line-usage');
 const startTest = require('../dist/cli/start-test').default;
 const report = require('../dist/cli/report').default;
 const seleniumInstall = require('../dist/cli/selenium-install').default;
 const seleniumStart = require('../dist/cli/selenium-start').default;
+const { validCommands, usageDefinition } = require('../dist/cli/cliUsageDefinitions');
 const { logger } = require('../dist/modules/logger');
-
-const validCommands = {
-  startTest: {
-    name: 'start-test',
-    desc: 'Starts cucumber process',
-  },
-  report: {
-    name: 'report',
-    desc: 'Generate cucumber HTML report',
-  },
-  seleniumInstall: {
-    name: 'selenium-install',
-    desc: 'Install selenium standalone server and related browser drivers',
-  },
-  seleniumStart: {
-    name: 'selenium-start',
-    desc: 'Start selenium standalone server locally',
-  },
-};
 
 /*
   How the below object is created?
@@ -46,30 +29,23 @@ const mainOptions = commandLineArgs(mainDefinitions);
 */
 (function optimus() {
   switch (mainOptions.command) {
-    case validCommands.startTest.name:
+    case validCommands.startTest:
       startTest();
-      return 0;
+      break;
 
-    case validCommands.report.name:
+    case validCommands.report:
       report();
-      return 0;
+      break;
 
-    case validCommands.seleniumInstall.name:
+    case validCommands.seleniumInstall:
       seleniumInstall();
-      return 0;
+      break;
 
-    case validCommands.seleniumStart.name:
+    case validCommands.seleniumStart:
       seleniumStart();
-      return 0;
+      break;
 
-    case 'help':
-    default:
-      logger.info(`
-      cmd: optimus help
-      
-      Valid commands are:
-        ${Object.values(validCommands).map((command) => `\n\t${command.name}: ${command.desc}`)}
-      `);
-      return 0;
+    case validCommands.help:
+    default: logger.info(commandLineUsage(usageDefinition));
   }
 }());
