@@ -2,6 +2,11 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _commandLineArgs = _interopRequireDefault(require("command-line-args"));
@@ -27,24 +32,28 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var optionDefinitions;
 var noConfigErrMsg = "No configuration file found! Please define \"".concat(_constants.CONFIG_FILE, "\" at root.");
 
-if ((0, _fs.existsSync)(_constants.CONFIG_FILE)) {
-  var config = require(_constants.CONFIG_FILE); // eslint-disable-line
+var _default = function _default() {
+  if ((0, _fs.existsSync)(_constants.CONFIG_FILE)) {
+    var config = require(_constants.CONFIG_FILE); // eslint-disable-line
 
 
-  optionDefinitions = (0, _parseStartTestConfig["default"])(config);
+    optionDefinitions = (0, _parseStartTestConfig["default"])(config);
 
-  _logger.logger.info(JSON.stringify(optionDefinitions));
-} else {
-  (0, _logAndThrowError["default"])(noConfigErrMsg);
-}
+    _logger.logger.info(JSON.stringify(optionDefinitions));
+  } else {
+    (0, _logAndThrowError["default"])(noConfigErrMsg);
+  }
 
-try {
-  var options = (0, _commandLineArgs["default"])(optionDefinitions);
+  try {
+    var options = (0, _commandLineArgs["default"])(optionDefinitions);
 
-  _logger.logger.data("Raw configuration: ".concat(JSON.stringify(options)));
+    _logger.logger.data("Raw configuration: ".concat(JSON.stringify(options)));
 
-  var cucumberChildProcess = (0, _start["default"])(_objectSpread({}, process.env, {}, options));
-  (0, _eventListener["default"])(cucumberChildProcess, options[_constants.CONFIG_GROUPS.framework].outputDir);
-} catch (error) {
-  (0, _logAndThrowError["default"])(error);
-}
+    var cucumberChildProcess = (0, _start["default"])(_objectSpread({}, process.env, {}, options));
+    (0, _eventListener["default"])(cucumberChildProcess, options[_constants.CONFIG_GROUPS.framework].outputDir);
+  } catch (error) {
+    (0, _logAndThrowError["default"])(error);
+  }
+};
+
+exports["default"] = _default;

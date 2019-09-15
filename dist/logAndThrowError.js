@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _logger = require("./support/logger");
+var _logger = require("./modules/logger");
 
 var _default = function _default(errMsg) {
   _logger.logger.error(errMsg);

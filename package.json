@@ -4,10 +4,7 @@
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
   "main": "dist/index.js",
   "bin": {
-    "start-test": "./bin/start-test.js",
-    "report": "./bin/report.js",
-    "selenium-install": "./bin/selenium-install.js",
-    "selenium-start": "./bin/selenium-start.js"
+    "optimus": "./bin/optimus.js"
   },
   "publishConfig": {
     "access": "public"

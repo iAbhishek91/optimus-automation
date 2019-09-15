@@ -9,18 +9,20 @@ let optionDefinitions;
 
 const noConfigErrMsg = `No configuration file found! Please define "${CONFIG_FILE}" at root.`;
 
-if (existsSync(CONFIG_FILE)) {
-  const config = require(CONFIG_FILE); // eslint-disable-line
+export default () => {
+  if (existsSync(CONFIG_FILE)) {
+    const config = require(CONFIG_FILE); // eslint-disable-line
 
-  optionDefinitions = parseSeleniumConfig(config);
-} else {
-  logAndThrowError(noConfigErrMsg);
-}
+    optionDefinitions = parseSeleniumConfig(config);
+  } else {
+    logAndThrowError(noConfigErrMsg);
+  }
 
-try {
-  const options = commandLineArgs(optionDefinitions);
+  try {
+    const options = commandLineArgs(optionDefinitions);
 
-  seleniumStart(options);
-} catch (error) {
-  logAndThrowError(error);
-}
+    seleniumStart(options);
+  } catch (error) {
+    logAndThrowError(error);
+  }
+};

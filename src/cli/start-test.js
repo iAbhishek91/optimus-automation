@@ -11,29 +11,29 @@ let optionDefinitions;
 
 const noConfigErrMsg = `No configuration file found! Please define "${CONFIG_FILE}" at root.`;
 
-if (existsSync(CONFIG_FILE)) {
-  const config = require(CONFIG_FILE); // eslint-disable-line
+export default () => {
+  if (existsSync(CONFIG_FILE)) {
+    const config = require(CONFIG_FILE); // eslint-disable-line
 
-  optionDefinitions = parseStartTestConfig(config);
+    optionDefinitions = parseStartTestConfig(config);
 
-  logger.info(JSON.stringify(optionDefinitions));
-} else {
-  logAndThrowError(noConfigErrMsg);
-}
+    logger.info(JSON.stringify(optionDefinitions));
+  } else {
+    logAndThrowError(noConfigErrMsg);
+  }
 
-try {
-  const options = commandLineArgs(optionDefinitions);
+  try {
+    const options = commandLineArgs(optionDefinitions);
 
-  logger.data(`Raw configuration: ${JSON.stringify(options)}`);
+    logger.data(`Raw configuration: ${JSON.stringify(options)}`);
 
-  const cucumberChildProcess = startCucumber({
-    ...process.env,
-    ...options,
-  });
+    const cucumberChildProcess = startCucumber({
+      ...process.env,
+      ...options,
+    });
 
-  cucumberEventListener(cucumberChildProcess, options[CONFIG_GROUPS.framework].outputDir);
-} catch (error) {
-  logAndThrowError(error);
-}
-
-
+    cucumberEventListener(cucumberChildProcess, options[CONFIG_GROUPS.framework].outputDir);
+  } catch (error) {
+    logAndThrowError(error);
+  }
+};
