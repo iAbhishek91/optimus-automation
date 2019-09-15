@@ -29,10 +29,13 @@ let mainOptions;
   > Refer: https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 */
 (function optimus() {
+  const usage = commandLineUsage(usageDefinition);
+
   try {
     mainOptions = commandLineArgs(mainDefinitions);
   } catch (error) {
-    logAndThrowError(error);
+    logger.error(error);
+    logger.info(usage);
   }
 
   switch (mainOptions.command) {
@@ -53,6 +56,6 @@ let mainOptions;
       break;
 
     case validCommands.help:
-    default: logger.info(commandLineUsage(usageDefinition));
+    default: logger.info(usage);
   }
 }());
