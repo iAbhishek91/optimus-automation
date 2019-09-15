@@ -4,6 +4,7 @@ import parseSeleniumConfig from '../config/parseSeleniumConfig';
 import logAndThrowError from '../logAndThrowError';
 import seleniumStart from '../modules/selenium-standalone/start';
 import { CONFIG_FILE } from '../constants';
+import { logger } from '../modules/logger';
 
 let optionDefinitions;
 
@@ -19,7 +20,16 @@ export default () => {
   }
 
   try {
-    const options = commandLineArgs(optionDefinitions);
+    /*
+      Why { argv: [] } is passed as argument?
+
+      > "commandLineArgs" function take an optional object argument.
+      > Each time, by default it processes the process.argv,
+      along with options mentioned by "-" or "--".
+      > Since we have already processed main command in bin/optimus.js file,
+      we are explicitly configuring argv to empty array.
+    */
+    const options = commandLineArgs(optionDefinitions, { argv: [] });
 
     seleniumStart(options);
   } catch (error) {

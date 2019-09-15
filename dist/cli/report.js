@@ -33,7 +33,17 @@ var _default = function _default() {
   }
 
   try {
-    var _commandLineArgs = (0, _commandLineArgs2["default"])(optionDefinitions),
+    /*
+      Why { argv: [] } is passed as argument?
+       > "commandLineArgs" function take an optional object argument.
+      > Each time, by default it processes the process.argv,
+      along with options mentioned by "-" or "--".
+      > Since we have already processed main command in bin/optimus.js file,
+      we are explicitly configuring argv to empty array.
+    */
+    var _commandLineArgs = (0, _commandLineArgs2["default"])(optionDefinitions, {
+      argv: []
+    }),
         isReportsPersistent = _commandLineArgs.isReportsPersistent,
         outputDir = _commandLineArgs.outputDir,
         reportName = _commandLineArgs.reportName;
