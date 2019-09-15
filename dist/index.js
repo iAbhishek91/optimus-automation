@@ -21,10 +21,10 @@ Object.defineProperty(exports, "utility", {
 });
 exports.logger = void 0;
 
-var logger = _interopRequireWildcard(require("./support/logger"));
+var logger = _interopRequireWildcard(require("./modules/logger"));
 
 exports.logger = logger;
 
-var _request = _interopRequireDefault(require("./support/request"));
+var _request = _interopRequireDefault(require("./modules/request"));
 
 var _utility = _interopRequireDefault(require("./utility"));
