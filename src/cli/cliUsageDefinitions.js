@@ -13,7 +13,7 @@ export const validCommands = {
 
 export const usageDefinition = [
   {
-    header: 'Optimus Automation CLI options',
+    header: 'Optimus Automation CLI usage guide',
     content: 'Multiple module supported. Each module is supported by a CLI command.',
   }, {
     header: 'Commands List',
