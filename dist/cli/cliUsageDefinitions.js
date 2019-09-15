@@ -19,7 +19,7 @@ var validCommands = {
 };
 exports.validCommands = validCommands;
 var usageDefinition = [{
-  header: 'Optimus Automation CLI options',
+  header: 'Optimus Automation CLI usage guide',
   content: 'Multiple module supported. Each module is supported by a CLI command.'
 }, {
   header: 'Commands List',
