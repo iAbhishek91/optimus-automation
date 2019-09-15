@@ -1,5 +1,5 @@
-import * as logger from './support/logger';
-import request from './support/request';
+import * as logger from './modules/logger';
+import request from './modules/request';
 import utility from './utility';
 
 export { logger, request, utility };

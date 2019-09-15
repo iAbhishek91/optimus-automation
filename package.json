@@ -2,16 +2,14 @@
   "name": "optimus-automation",
   "version": "1.0.3",
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
+  "author": "Abhishek Das <i.abhishek.dass@gmail.com>",
+  "license": "ISC",
   "main": "dist/index.js",
   "bin": {
     "optimus": "./bin/optimus.js"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "rm -rf dist && babel src -d dist",
-    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -26,12 +24,22 @@
     "API-testing",
     "UI-testing"
   ],
-  "author": "Abhishek Das <i.abhishek.dass@gmail.com>",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/iAbhishek91/optimus-automation/issues"
   },
   "homepage": "https://github.com/iAbhishek91/optimus-automation#readme",
+  "scripts": {
+    "build": "rm -rf dist && babel src -d dist",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "cross-spawn": "^7.0.0",
+    "cucumber-html-reporter": "^5.0.2",
+    "request": "^2.88.0",
+    "selenium-standalone": "^6.16.0",
+    "winston": "^3.2.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
@@ -42,13 +50,5 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3"
-  },
-  "dependencies": {
-    "command-line-args": "^5.1.1",
-    "cross-spawn": "^7.0.0",
-    "cucumber-html-reporter": "^5.0.2",
-    "request": "^2.88.0",
-    "selenium-standalone": "^6.16.0",
-    "winston": "^3.2.1"
   }
 }
