@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.0.2",
     "cross-spawn": "^7.0.0",
     "cucumber-html-reporter": "^5.0.2",
     "request": "^2.88.0",
@@ -50,5 +51,9 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3"
+  },
+  "peerDependencies": {
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }
