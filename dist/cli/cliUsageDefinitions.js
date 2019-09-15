@@ -24,6 +24,9 @@ var usageDefinition = [{
 }, {
   header: 'Commands List',
   content: [{
+    name: validCommands.help,
+    summary: 'To show CLI guide. Use: optimus help'
+  }, {
     name: validCommands.startTest,
     summary: 'Starts cucumber process.'
   }, {
