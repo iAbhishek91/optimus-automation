@@ -24,7 +24,7 @@ With help of this module we are trying to help and coach engineers who wants to 
 
 Engineers who want to perform browser based Ui testing, API testing etc... can use this module to learn and save time.
 
-Refer [features section](https://github.com/iAbhishek91/optimus-automation#features) for details list of features provided.
+Refer [features section](https://github.com/iAbhishek91/optimus-automation#features) for  list of features provided.
 
 ### Before you start
 
