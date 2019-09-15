@@ -10,6 +10,7 @@ exports.usageDefinition = exports.validCommands = void 0;
   > Implemented using module 'command-line-usage'
   > Refer: https://github.com/75lb/command-line-usage
 */
+var executable = 'optimus';
 var validCommands = {
   startTest: 'start-test',
   report: 'report',
@@ -20,12 +21,12 @@ var validCommands = {
 exports.validCommands = validCommands;
 var usageDefinition = [{
   header: 'Optimus Automation CLI usage guide',
-  content: 'Multiple module supported. Each module is supported by a CLI command.'
+  content: "Multiple module supported. Each module is supported by a CLI command.\n\n    CLI format: ".concat(executable, " <command> <options>")
 }, {
   header: 'Commands List',
   content: [{
     name: validCommands.help,
-    summary: 'To show CLI guide. Use: optimus help'
+    summary: 'To show CLI guide.'
   }, {
     name: validCommands.startTest,
     summary: 'Starts cucumber process.'

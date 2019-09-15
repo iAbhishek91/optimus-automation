@@ -3,6 +3,9 @@
   > Implemented using module 'command-line-usage'
   > Refer: https://github.com/75lb/command-line-usage
 */
+
+const executable = 'optimus';
+
 export const validCommands = {
   startTest: 'start-test',
   report: 'report',
@@ -14,13 +17,14 @@ export const validCommands = {
 export const usageDefinition = [
   {
     header: 'Optimus Automation CLI usage guide',
-    content: 'Multiple module supported. Each module is supported by a CLI command.',
+    content: `Multiple module supported. Each module is supported by a CLI command.\n
+    CLI format: ${executable} <command> <options>`,
   }, {
     header: 'Commands List',
     content: [
       {
         name: validCommands.help,
-        summary: 'To show CLI guide. Use: optimus help',
+        summary: 'To show CLI guide.',
       },
       {
         name: validCommands.startTest,
