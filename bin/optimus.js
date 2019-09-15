@@ -8,6 +8,7 @@ const seleniumInstall = require('../dist/cli/selenium-install').default;
 const seleniumStart = require('../dist/cli/selenium-start').default;
 const { validCommands, usageDefinition } = require('../dist/cli/cliUsageDefinitions');
 const { logger } = require('../dist/modules/logger');
+const logAndThrowError = require('../dist/logAndThrowError').default;
 
 /*
   How the below object is created?
@@ -21,13 +22,19 @@ const mainDefinitions = [
   { name: 'command', defaultOption: true },
 ];
 
-const mainOptions = commandLineArgs(mainDefinitions);
+let mainOptions;
 
 /*
   This below function is IIFE.
   > Refer: https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 */
 (function optimus() {
+  try {
+    mainOptions = commandLineArgs(mainDefinitions);
+  } catch (error) {
+    logAndThrowError(error);
+  }
+
   switch (mainOptions.command) {
     case validCommands.startTest:
       startTest();
