@@ -13,11 +13,11 @@ export default (config) => {
   // if selenium options are not passed, then default seleniumOptions are not configured.
   if (!isSeleniumDefined) return [];
 
-  const cucumberOptionDefinitions = [];
+  const seleniumOptionDefinitions = [];
   const { seleniumOptions } = config;
 
   // push options required to download selenium-standalone
-  cucumberOptionDefinitions.push(
+  seleniumOptionDefinitions.push(
     transformToCliArgObj(
       'seleniumBaseURL',
       seleniumOptions.seleniumBaseURL || defaultSeleniumOptions.seleniumBaseURL,
@@ -37,7 +37,7 @@ export default (config) => {
 
   // push options required to download chomeDriver
   if (isChromeDefined) {
-    cucumberOptionDefinitions.push(
+    seleniumOptionDefinitions.push(
       transformToCliArgObj(
         'chromeBaseURL',
         seleniumOptions.chromeBaseURL || defaultSeleniumOptions.chromeBaseURL,
@@ -53,7 +53,7 @@ export default (config) => {
 
   // push options required to download ieDriver
   if (isIeDefined) {
-    cucumberOptionDefinitions.push(
+    seleniumOptionDefinitions.push(
       transformToCliArgObj(
         'ieBaseURL',
         seleniumOptions.ieBaseURL || defaultSeleniumOptions.ieBaseURL,
@@ -69,7 +69,7 @@ export default (config) => {
 
   // push options required to download firefoxDriver
   if (isFirefoxDefined) {
-    cucumberOptionDefinitions.push(
+    seleniumOptionDefinitions.push(
       transformToCliArgObj(
         'firefoxBaseURL',
         seleniumOptions.firefoxBaseURL || defaultSeleniumOptions.firefoxBaseURL,
@@ -85,7 +85,7 @@ export default (config) => {
 
   // push options required to download edgeDriver
   if (isEdgeDefined) {
-    cucumberOptionDefinitions.push(
+    seleniumOptionDefinitions.push(
       transformToCliArgObj(
         'edgeVersion',
         seleniumOptions.edgeVersion,
@@ -94,5 +94,5 @@ export default (config) => {
     );
   }
 
-  return cucumberOptionDefinitions;
+  return seleniumOptionDefinitions;
 };
