@@ -1,6 +1,6 @@
 {
   "name": "optimus-automation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
   "author": "Abhishek Das <i.abhishek.dass@gmail.com>",
   "license": "ISC",
