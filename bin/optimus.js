@@ -8,13 +8,12 @@ const seleniumInstall = require('../dist/cli/selenium-install').default;
 const seleniumStart = require('../dist/cli/selenium-start').default;
 const { validCommands, usageDefinition } = require('../dist/cli/cliUsageDefinitions');
 const { logger } = require('../dist/modules/logger');
-const logAndThrowError = require('../dist/logAndThrowError').default;
 
 /*
   How the below object is created?
 
   > "name" is the name of the command.
-  > "defaultOption" which are not considered by optionDefinitions.
+  > "defaultOption" which are not considered by optionDefinitions, ie options without "-" or "--"".
   > Refer the below URL for official documentation from command-line-arg.
   URL: https://github.com/75lb/command-line-args/blob/master/doc/option-definition.md
 */
