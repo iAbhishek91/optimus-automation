@@ -19,8 +19,6 @@ var _install = _interopRequireDefault(require("../modules/selenium-standalone/in
 
 var _constants = require("../constants");
 
-var _logger = require("../modules/logger");
-
 var optionDefinitions;
 var noConfigErrMsg = "No configuration file found! Please define \"".concat(_constants.CONFIG_FILE, "\" at root.");
 

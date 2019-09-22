@@ -4,7 +4,6 @@ import parseSeleniumConfig from '../config/parseSeleniumConfig';
 import logAndThrowError from '../logAndThrowError';
 import seleniumStart from '../modules/selenium-standalone/start';
 import { CONFIG_FILE } from '../constants';
-import { logger } from '../modules/logger';
 
 let optionDefinitions;
 
