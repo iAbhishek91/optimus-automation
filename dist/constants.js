@@ -10,7 +10,8 @@ var CONFIG_GROUPS = {
   custom: 'customOptions',
   framework: 'frameworkOptions',
   selenium: 'seleniumOptions',
-  cucumber: 'cucumberOptions'
+  cucumber: 'cucumberOptions',
+  webdriverIO: 'webdriverIOOptions'
 };
 exports.CONFIG_GROUPS = CONFIG_GROUPS;
 var IS_YN = {

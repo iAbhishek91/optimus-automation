@@ -4,32 +4,56 @@ import {
 import { CONFIG_GROUPS } from '../constants';
 
 
-const transformToCliArgObj = (name, defaultValue, group) => ({ name, defaultValue, group });
+/**
+ * @description Transform the inputs into "command-line-args" compatible object.
+ * @param {String} name name of the CLI option
+ * @param {*} defaultValue default value of the option if not configured from CLI.
+ * @returns "command-line-args" compatible object.
+ */
+const transformToCliArgObj = (name, defaultValue) => ({
+  name,
+  defaultValue,
+  group: CONFIG_GROUPS.selenium,
+});
 
 
-export default (config) => {
-  const isSeleniumDefined = Object.prototype.hasOwnProperty.call(config, CONFIG_GROUPS.selenium);
+/**
+ * @description To install or start "selenium-standalone". The configuration required,
+ * are passed from "optimusrc.js" file, else will set to default. Then all the
+ * configurations are re-structured to be compatible with "command-line-args". This will
+ * enable user to pass configuration value from CLI.
+ * @param {Object} config Object from "optimusrc.js", should be defined in the dependent project.
+ * @returns Array consisting of all the configuration required by "selenium-standalone".
+ * Each element of the return array is an compatible "command-line-arg" Object.
+ */
+export default (configFromOptimusrc) => {
+  // validate if user wish to use selenium or not.
+  const isSeleniumDefined = Object
+    .prototype
+    .hasOwnProperty
+    .call(configFromOptimusrc, CONFIG_GROUPS.selenium);
 
   // if selenium options are not passed, then default seleniumOptions are not configured.
   if (!isSeleniumDefined) return [];
 
   const seleniumOptionDefinitions = [];
-  const { seleniumOptions } = config;
+
+  // configuration passed from "optimusrc.js"
+  const { seleniumOptions } = configFromOptimusrc;
 
   // push options required to download selenium-standalone
   seleniumOptionDefinitions.push(
     transformToCliArgObj(
       'seleniumBaseURL',
       seleniumOptions.seleniumBaseURL || defaultSeleniumOptions.seleniumBaseURL,
-      CONFIG_GROUPS.selenium,
     ),
     transformToCliArgObj(
       'seleniumVersion',
       seleniumOptions.seleniumVersion || defaultSeleniumOptions.seleniumVersion,
-      CONFIG_GROUPS.selenium,
     ),
   );
 
+  // validate list of browser user want to use. By default all the browser will not be loaded.
   const isChromeDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'chromeVersion');
   const isIeDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'ieVersion');
   const isFirefoxDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'firefoxVersion');
@@ -41,12 +65,10 @@ export default (config) => {
       transformToCliArgObj(
         'chromeBaseURL',
         seleniumOptions.chromeBaseURL || defaultSeleniumOptions.chromeBaseURL,
-        CONFIG_GROUPS.selenium,
       ),
       transformToCliArgObj(
         'chromeVersion',
         seleniumOptions.chromeVersion,
-        CONFIG_GROUPS.selenium,
       ),
     );
   }
@@ -57,12 +79,10 @@ export default (config) => {
       transformToCliArgObj(
         'ieBaseURL',
         seleniumOptions.ieBaseURL || defaultSeleniumOptions.ieBaseURL,
-        CONFIG_GROUPS.selenium,
       ),
       transformToCliArgObj(
         'ieVersion',
         seleniumOptions.ieVersion,
-        CONFIG_GROUPS.selenium,
       ),
     );
   }
@@ -73,12 +93,10 @@ export default (config) => {
       transformToCliArgObj(
         'firefoxBaseURL',
         seleniumOptions.firefoxBaseURL || defaultSeleniumOptions.firefoxBaseURL,
-        CONFIG_GROUPS.selenium,
       ),
       transformToCliArgObj(
         'firefoxVersion',
         seleniumOptions.firefoxVersion,
-        CONFIG_GROUPS.selenium,
       ),
     );
   }
@@ -89,10 +107,12 @@ export default (config) => {
       transformToCliArgObj(
         'edgeVersion',
         seleniumOptions.edgeVersion,
-        CONFIG_GROUPS.selenium,
       ),
     );
   }
 
+  // "seleniumOptionDefinitions" is an array of command-line-arg compatible objects.
+  // Refer the below URL for official documentation from command-line-arg object.
+  // URL: https://github.com/75lb/command-line-args/blob/master/doc/option-definition.md
   return seleniumOptionDefinitions;
 };

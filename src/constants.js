@@ -5,6 +5,7 @@ export const CONFIG_GROUPS = {
   framework: 'frameworkOptions',
   selenium: 'seleniumOptions',
   cucumber: 'cucumberOptions',
+  webdriverIO: 'webdriverIOOptions',
 };
 
 export const IS_YN = { Y: 'yes', N: 'no' };

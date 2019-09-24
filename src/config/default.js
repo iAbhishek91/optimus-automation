@@ -1,10 +1,12 @@
 import path from 'path';
 
+// below configuration is used by this project, user can modify these configs from optimusrc.js.
 export const defaultFrameworkOptions = {
   outputDir: 'output',
   isReportsPersistent: false,
 };
 
+// below configuration is used by cucumber Options
 export const defaultCucumberOptions = {
   featureRootDir: path.join(process.cwd(), 'features'),
   featurePath: '**',
@@ -16,6 +18,7 @@ export const defaultCucumberOptions = {
   tags: null,
 };
 
+// below configuration is used by selenium-standalone server
 export const defaultSeleniumOptions = {
   arch: process.arch,
   seleniumBaseURL: 'https://selenium-release.storage.googleapis.com',
@@ -26,4 +29,9 @@ export const defaultSeleniumOptions = {
   ieVersion: '3.14.0',
   firefoxBaseURL: 'https://github.com/mozilla/geckodriver/releases/download',
   firefoxVersion: '0.23.0',
+};
+
+// below configuration is used by webdriverIO APIs
+export const defaultWebdriverIOOptions = {
+  defaultWaitForElementToExistsInMs: 30 * 1000,
 };

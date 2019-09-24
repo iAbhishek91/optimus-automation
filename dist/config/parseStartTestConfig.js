@@ -19,6 +19,12 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+/**
+ * @description Transform the inputs into "command-line-args" compatible object.
+ * @param {String} name name of the CLI option
+ * @param {*} defaultValue default value of the option if not configured from CLI.
+ * @returns "command-line-args" compatible object.
+ */
 var transformToCliArgObj = function transformToCliArgObj(name, defaultValue, group) {
   return {
     name: name,
@@ -26,6 +32,16 @@ var transformToCliArgObj = function transformToCliArgObj(name, defaultValue, gro
     group: group
   };
 };
+/**
+ * @description This function does below steps
+ * 1. Set the default option value based on the config group
+ * 2. Override default options object using options object passed from "optimusrc.js"
+ * 3. Restructure the object to be compatible with "command-line-args"
+ * @param {String} configGroup config group defines what type of configuration are you passing.
+ * @param {Object} optionValues Options object passed from "optimusrc.js"
+ * @return array of command-line-args compatible object
+ */
+
 
 var processOptionsForConfigGroup = function processOptionsForConfigGroup(configGroup, optionValues) {
   var optionDefinitions = []; // select default value object based on the config group
@@ -39,56 +55,33 @@ var processOptionsForConfigGroup = function processOptionsForConfigGroup(configG
 
   Object.keys(updatedOptionValues).forEach(function (option) {
     optionDefinitions.push(transformToCliArgObj(option, updatedOptionValues[option], configGroup));
-  });
+  }); // Array of command-line-arg compatible objects.
+
   return optionDefinitions;
 };
-
-var processSeleniumOptions = function processSeleniumOptions(config) {
-  var isSeleniumDefined = Object.prototype.hasOwnProperty.call(config, _constants.CONFIG_GROUPS.selenium); // if selenium options are not passed, then default seleniumOptions are not configured.
-
-  if (!isSeleniumDefined) return [];
-  var cucumberOptionDefinitions = [];
-  var seleniumOptions = config.seleniumOptions; // push options required to download selenium-standalone
-
-  cucumberOptionDefinitions.push(transformToCliArgObj('seleniumBaseURL', seleniumOptions.seleniumBaseURL || _default2.defaultSeleniumOptions.seleniumBaseURL, _constants.CONFIG_GROUPS.selenium), transformToCliArgObj('seleniumVersion', seleniumOptions.seleniumVersion || _default2.defaultSeleniumOptions.seleniumVersion, _constants.CONFIG_GROUPS.selenium));
-  var isChromeDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'chromeVersion');
-  var isIeDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'ieVersion');
-  var isFirefoxDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'firefoxVersion');
-  var isEdgeDefined = Object.prototype.hasOwnProperty.call(seleniumOptions, 'edgeVersion'); // push options required to download chomeDriver
-
-  if (isChromeDefined) {
-    cucumberOptionDefinitions.push(transformToCliArgObj('chromeBaseURL', seleniumOptions.chromeBaseURL || _default2.defaultSeleniumOptions.chromeBaseURL, _constants.CONFIG_GROUPS.selenium), transformToCliArgObj('chromeVersion', seleniumOptions.chromeVersion, _constants.CONFIG_GROUPS.selenium));
-  } // push options required to download ieDriver
+/**
+ * @description To initialize "cucumber JS". The configuration required,
+ * are passed from "optimusrc.js" file, else will set to default. Then all the
+ * configurations are re-structured to be compatible with "command-line-args". This will
+ * enable user to pass configuration value from CLI.
+ * @param {Object} config Object from "optimusrc.js", should be defined in the dependent project.
+ * @returns Array consisting of all the configuration required by "selenium-standalone".
+ * Each element of the return array is an compatible "command-line-arg" Object.
+ */
 
 
-  if (isIeDefined) {
-    cucumberOptionDefinitions.push(transformToCliArgObj('ieBaseURL', seleniumOptions.ieBaseURL || _default2.defaultSeleniumOptions.ieBaseURL, _constants.CONFIG_GROUPS.selenium), transformToCliArgObj('ieVersion', seleniumOptions.ieVersion, _constants.CONFIG_GROUPS.selenium));
-  } // push options required to download firefoxDriver
-
-
-  if (isFirefoxDefined) {
-    cucumberOptionDefinitions.push(transformToCliArgObj('firefoxBaseURL', seleniumOptions.firefoxBaseURL || _default2.defaultSeleniumOptions.firefoxBaseURL, _constants.CONFIG_GROUPS.selenium), transformToCliArgObj('firefoxVersion', seleniumOptions.firefoxVersion, _constants.CONFIG_GROUPS.selenium));
-  } // push options required to download edgeDriver
-
-
-  if (isEdgeDefined) {
-    cucumberOptionDefinitions.push(transformToCliArgObj('edgeVersion', seleniumOptions.edgeVersion, _constants.CONFIG_GROUPS.selenium));
-  }
-
-  return cucumberOptionDefinitions;
-};
-
-var _default = function _default(config) {
-  var customOptions = config.customOptions,
-      frameworkOptions = config.frameworkOptions,
-      cucumberOptions = config.cucumberOptions; // process frameworkOptions
+var _default = function _default(configFromOptimusrc) {
+  var customOptions = configFromOptimusrc.customOptions,
+      frameworkOptions = configFromOptimusrc.frameworkOptions,
+      cucumberOptions = configFromOptimusrc.cucumberOptions; // process frameworkOptions
 
   var frameworkOptionDefinitions = processOptionsForConfigGroup(_constants.CONFIG_GROUPS.framework, frameworkOptions); // process cucumberOptions
 
-  var cucumberOptionDefinitions = processOptionsForConfigGroup(_constants.CONFIG_GROUPS.cucumber, cucumberOptions); // process seleniumOptions
+  var cucumberOptionDefinitions = processOptionsForConfigGroup(_constants.CONFIG_GROUPS.cucumber, cucumberOptions); // Array of command-line-arg compatible objects.
+  // Refer the below URL for official documentation from command-line-arg object.
+  // URL: https://github.com/75lb/command-line-args/blob/master/doc/option-definition.md
 
-  var seleniumOptionDefinitions = processSeleniumOptions(config);
-  return [].concat((0, _toConsumableArray2["default"])(customOptions), (0, _toConsumableArray2["default"])(frameworkOptionDefinitions), (0, _toConsumableArray2["default"])(cucumberOptionDefinitions), (0, _toConsumableArray2["default"])(seleniumOptionDefinitions));
+  return [].concat((0, _toConsumableArray2["default"])(customOptions), (0, _toConsumableArray2["default"])(frameworkOptionDefinitions), (0, _toConsumableArray2["default"])(cucumberOptionDefinitions));
 };
 
 exports["default"] = _default;
