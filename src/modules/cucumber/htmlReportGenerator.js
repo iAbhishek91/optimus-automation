@@ -15,7 +15,7 @@ export default (isReportsPersistent, outputDir, reportName) => {
   const options = {
     theme: 'bootstrap',
     jsonFile: jsonOutputPath,
-    output: cucumberHtmlReportPath(isReportsPersistent),
+    output: cucumberHtmlReportPath,
     reportSuiteAsScenario: true,
     launchReport: false,
   };
