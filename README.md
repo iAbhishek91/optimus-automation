@@ -6,7 +6,7 @@
 
 There are multiple frameworks or boilerplate code available which can help you to kick start with your test automation project. But it's not about getting your job done!!!
 
-We belong to the group of engineers who try to avoid boilerplate or abstract layer of code in our projects. It always payoff when you understand the core concepts of a module before consuming it.
+We belong to the group of engineers who try to avoid boilerplate or abstract layer of code in our projects. It always pays-off when you understand the core concepts of a module before consuming it.
 
 Couple of reasons to support:
 
@@ -22,7 +22,7 @@ With help of this module we are trying to help and coach engineers who wants to 
 
 ### Scope
 
-Engineers who want to perform browser based Ui testing, API testing etc... can use this module to learn and save time.
+Engineers who want to perform browser based UI testing, API testing etc... can use this module to learn and save time.
 
 Refer [features section](https://github.com/iAbhishek91/optimus-automation#features) for  list of features provided.
 
@@ -77,3 +77,13 @@ npm install optimus-automation --save
   Learn about `selenium-standalone` API implementation from [/src/modules/selenium-standalone](https://github.com/iAbhishek91/optimus-automation/tree/master/src/modules/selenium-standalone).
 
   > NOTE: Don't get confuse with selenium-webdriver with selenium-standalone. Selenium-standalone is just a server used as an interface between `webdriver-io` and your browser. If you are using [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) instead of [webdriver-io](https://www.npmjs.com/package/webdriverio), then use of selenium-standalone is optional. To know more about selenium-webdriver and selenium-standalone refer [seleniumhq.org](https://www.seleniumhq.org/docs/03_webdriver.jsp#webdriver-and-the-selenium-server).
+
+* **API methods** in-built. [Request](https://www.npmjs.com/package/request) module is used to make any HTTP calls (REST or SOAP). One can take advantage of this functions to make request and validate the response object.
+
+Learn at the `request` simple implementation from [/src/modules/request](https://github.com/iAbhishek91/optimus-automation/blob/master/src/modules/request/index.js).
+
+* **Logger methods** in-built. [Winston](https://www.npmjs.com/package/winston) module is used for logging. Most project requires logging mechanism for debugging, analytics or ML. One may use the function to learn about basic of log implementation.
+
+These module also be useful to learn how CLI logs are beatified without using any module. Color format and categorizing different type of logs.
+
+Learn at the `request` simple implementation from [/src/modules/request](https://github.com/iAbhishek91/optimus-automation/blob/master/src/modules/request/index.js).
