@@ -31,7 +31,7 @@
   "homepage": "https://github.com/iAbhishek91/optimus-automation#readme",
   "scripts": {
     "build": "rm -rf dist && babel src -d dist",
-    "lint": "eslint src"
+    "lint": "eslint src bin"
   },
   "dependencies": {
     "command-line-args": "^5.1.1",

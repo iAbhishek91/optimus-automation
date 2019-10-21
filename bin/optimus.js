@@ -29,9 +29,21 @@ let mainOptions;
 */
 (function optimus() {
   const usage = commandLineUsage(usageDefinition);
+  let argv;
 
   try {
-    mainOptions = commandLineArgs(mainDefinitions);
+    // stopAtFirstUnknown parameter makes multiple invocation or processing of commandLineArgs.
+    // All the command line argument which are not defined are grouped under "_unknown" group
+    // "_unknown" group are used to processing command line args at first invocation.
+    // Without "{ stopAtFirstUnknown: true }", command-line-args module will throw error,
+    // UNKNOWN_VALUE when unknown parameter are not defined properly in optionsDefinitions.
+    mainOptions = commandLineArgs(mainDefinitions, { stopAtFirstUnknown: true });
+
+    // The argv variable will contain array of elements,
+    // which are not processed by first command line args.
+    // These _unkown arguments will be passed to downstream,
+    // so that it can be processed by later command line args.
+    argv = mainOptions._unknown || [];
   } catch (error) {
     logger.error(error);
     logger.info(usage);
@@ -40,19 +52,19 @@ let mainOptions;
 
   switch (mainOptions.command) {
     case validCommands.startTest:
-      startTest();
+      startTest(argv);
       break;
 
     case validCommands.report:
-      report();
+      report(argv);
       break;
 
     case validCommands.seleniumInstall:
-      seleniumInstall();
+      seleniumInstall(argv);
       break;
 
     case validCommands.seleniumStart:
-      seleniumStart();
+      seleniumStart(argv);
       break;
 
     case validCommands.help:
