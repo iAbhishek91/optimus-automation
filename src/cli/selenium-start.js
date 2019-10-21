@@ -9,7 +9,7 @@ let optionDefinitions;
 
 const noConfigErrMsg = `No configuration file found! Please define "${CONFIG_FILE}" at root.`;
 
-export default () => {
+export default (argv) => {
   if (existsSync(CONFIG_FILE)) {
     const config = require(CONFIG_FILE); // eslint-disable-line
 
@@ -26,9 +26,9 @@ export default () => {
       > Each time, by default it processes the process.argv,
       along with options mentioned by "-" or "--".
       > Since we have already processed main command in bin/optimus.js file,
-      we are explicitly configuring argv to empty array.
+      we are explicitly configuring argv arguments which were _unknown after first processing.
     */
-    const options = commandLineArgs(optionDefinitions, { argv: [] });
+    const options = commandLineArgs(optionDefinitions, { argv });
 
     seleniumStart(options);
   } catch (error) {
