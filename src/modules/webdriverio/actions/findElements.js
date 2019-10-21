@@ -7,13 +7,16 @@ const {
 } = config();
 
 export default async (locator, timeout = defaultWaitForElementToExistsInMs) => {
-  try {
-    const webElement = await browser.$(locator);
-    await webElement.waitForDisplayed(timeout);
-    await webElement.click();
+  let webElements;
 
-    logger.info(actionLogTemplate('click', locator));
+  try {
+    webElements = await browser.$$(locator);
+    await webElements[0].waitForExist(timeout);
+
+    logger.info(actionLogTemplate('findElements', locator));
   } catch (error) {
-    errorLog(`Error occurred while performing click: ${error.message}`);
+    errorLog(`Error occurred while finding elements: ${error.message}`);
   }
+
+  return webElements;
 };

@@ -34,4 +34,7 @@ export const defaultSeleniumOptions = {
 // below configuration is used by webdriverIO APIs
 export const defaultWebdriverIOOptions = {
   defaultWaitForElementToExistsInMs: 30 * 1000,
+  defaultIsExistingPauseExecutionTimeoutInMs: 10 * 1000,
+  defaultPageReloadCount: 5,
+  screenshotDirectory: path.join('output', 'screenshot'),
 };

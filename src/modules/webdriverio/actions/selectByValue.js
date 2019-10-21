@@ -1,5 +1,5 @@
-import selectByAttribute from './selectByAttribute';
 import config from '../config';
+import selectByAttribute from './selectByAttribute';
 
 const {
   defaultWaitForElementToExistsInMs,

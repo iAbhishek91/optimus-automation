@@ -5,20 +5,14 @@ const {
 } = config();
 
 export default async (locator, timeout = defaultIsExistingPauseExecutionTimeoutInMs) => {
-  let doesElementExist = false;
-
   const webElement = await browser.$(locator);
-
   try {
-    // waitForExist returns true if element is present within the DOM.
+    // isDisplayed returns true if element is displayed within the DOM.
     // else it will throw an error.
-    // refer: https://webdriver.io/docs/api/element/waitForExist.html
-    await webElement.waitForExist(timeout);
+    // refer: https://webdriver.io/docs/api/element/waitForDisplayed.html
+    await webElement.waitForDisplayed(timeout);
+    return true;
   } catch (error) {
     return false;
   }
-
-  doesElementExist = await webElement.isExisting();
-
-  return doesElementExist;
 };

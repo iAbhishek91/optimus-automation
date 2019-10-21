@@ -6,15 +6,14 @@ const {
   defaultWaitForElementToExistsInMs,
 } = config();
 
-
-export default async (locater, attribute, value, timeout = defaultWaitForElementToExistsInMs) => {
+export default async (locater, text, timeout = defaultWaitForElementToExistsInMs) => {
   try {
     const webElement = await browser.$(locater);
     await webElement.waitForExist(timeout);
-    await webElement.selectByAttribute(attribute, value);
+    await webElement.selectByVisibleText(text);
 
-    logger.info(actionLogTemplate('selectByAttribute', locater, attribute, value));
+    logger.info(actionLogTemplate('selectByVisibleText', locater, text));
   } catch (error) {
-    errorLog(`Error occurred while performing selectByAttribute: ${error.message}`);
+    errorLog(`Error occurred while performing selectByVisibleText: ${error.message}`);
   }
 };

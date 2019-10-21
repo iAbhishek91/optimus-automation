@@ -1,5 +1,6 @@
-import { errorLog } from '../../logger';
 import config from '../config';
+import { errorLog, plainLog as logger } from '../../logger';
+import { actionLogTemplate } from '../../logger/logTemplates';
 
 const {
   defaultWaitForElementToExistsInMs,
@@ -11,9 +12,11 @@ export default async (locater, timeout = defaultWaitForElementToExistsInMs) => {
   try {
     const webElement = await browser.$(locater);
     await webElement.waitForExist(timeout);
-    data = webElement.getText();
+    data = await webElement.getText();
+
+    logger.info(actionLogTemplate('getText', locater, undefined, data));
   } catch (error) {
-    errorLog(`Error occurred while performing getText on ${locater}`);
+    errorLog(`Error occurred while performing getText: ${error.message}`);
   }
 
   return data;

@@ -1,5 +1,6 @@
-import { errorLog } from '../../logger';
 import config from '../config';
+import { errorLog, plainLog as logger } from '../../logger';
+import { actionLogTemplate } from '../../logger/logTemplates';
 
 const {
   defaultWaitForElementToExistsInMs,
@@ -10,7 +11,9 @@ export default async (locater, value, timeout = defaultWaitForElementToExistsInM
     const webElement = await browser.$(locater);
     await webElement.waitForExist(timeout);
     await webElement.setValue(value);
+
+    logger.info(actionLogTemplate('setValue', locater, undefined, value));
   } catch (error) {
-    errorLog(`Error occurred while performing setValue on ${locater}`);
+    errorLog(`Error occurred while performing setValue: ${error.message}`);
   }
 };
