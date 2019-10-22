@@ -10,7 +10,7 @@ export default () => {
   let configFromOptimusrc;
 
   if (existsSync(CONFIG_FILE)) {
-    const configFromOptimusrc = require(CONFIG_FILE); // eslint-disable-line
+    configFromOptimusrc = require(CONFIG_FILE); // eslint-disable-line
   } else {
     logAndThrowError(noConfigErrMsg);
   }
@@ -22,7 +22,7 @@ export default () => {
     .call(configFromOptimusrc, CONFIG_GROUPS.webdriverIO);
 
   // If webdriverIO is not defined in optimusrc, return default config values.
-  if (isWebdriverIOOptionDefined) return defaultWebdriverIOOptions;
+  if (!isWebdriverIOOptionDefined) return defaultWebdriverIOOptions;
 
   // overriding default configuration with "optimusrc.js" configuration
   return {
