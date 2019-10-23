@@ -20,7 +20,7 @@ export default (argv) => {
 
   try {
     /*
-      Why { argv: [] } is passed as argument?
+      Why { argv } is passed as argument?
 
       > "commandLineArgs" function take an optional object argument.
       > Each time, by default it processes the process.argv,
