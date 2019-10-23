@@ -1,11 +1,17 @@
-import * as logger from './modules/logger';
-import actions from './modules/webdriverio/actions';
+import * as loggers from './modules/logger';
+import actionLib from './modules/webdriverio/actions';
 import request from './modules/request';
-import utility from './utility';
+import * as apiResponseProcesser from './modules/request/apiResponseProcesser';
+import utilityLib from './utility';
+
+export const action = { ...actionLib };
+
+export const logger = { ...loggers };
+
+export const requestProcessor = { ...apiResponseProcesser };
+
+export const utilities = { ...utilityLib };
 
 export {
-  logger,
   request,
-  utility,
-  actions,
 };
