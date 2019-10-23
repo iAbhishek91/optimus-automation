@@ -4,13 +4,56 @@ import request from './modules/request';
 import * as apiResponseProcesser from './modules/request/apiResponseProcesser';
 import utilityLib from './utility';
 
-export const actions = { ...actionLib };
+export const {
+  saveScreenshot,
+  attachScreenshot,
+  isExisting,
+  isDisplayed,
+  click,
+  clearValue,
+  findElements,
+  getElementCount,
+  setValue,
+  selectByAttribute,
+  selectByValue,
+  selectByVisibleText,
+  getAttribute,
+  getText,
+  getUrl,
+  refresh,
+  url,
+  appendUrl,
+  waitUntilURL,
+  refreshUntilLoad,
+} = actionLib;
 
-export const logger = { ...loggers };
+export const {
+  logger,
+  plainLog,
+  errorLog,
+} = loggers;
 
-export const requestProcessor = { ...apiResponseProcesser };
+export const {
+  getBody,
+  getHeaders,
+  getStatus,
+} = apiResponseProcesser;
 
-export const utilities = { ...utilityLib };
+export const {
+  mkdir,
+  sleep,
+  writeFile,
+  removeEmptyElements,
+  convertArrayToUpperCase,
+  dateNow,
+  getDateObject,
+  formattedTimezone,
+  splitText,
+  splitTextAndReturnIndex,
+  isUndefined,
+  isNotUndefined,
+  isBoolean,
+} = utilityLib;
 
 export {
   request,
