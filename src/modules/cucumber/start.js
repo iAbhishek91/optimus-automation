@@ -17,5 +17,5 @@ export default (options) => {
     ${cucumberOptions}`,
   );
 
-  return spawn(cucumber, [...cucumberOptions], { options });
+  return spawn(cucumber, [...cucumberOptions], { env: options });
 };
