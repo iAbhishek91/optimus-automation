@@ -4,7 +4,7 @@ import request from './modules/request';
 import * as apiResponseProcesser from './modules/request/apiResponseProcesser';
 import utilityLib from './utility';
 
-export const action = { ...actionLib };
+export const actions = { ...actionLib };
 
 export const logger = { ...loggers };
 
