@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 import parseSeleniumConfig from '../config/parseSeleniumConfig';
 import logAndThrowError from '../logAndThrowError';
 import seleniumInstall from '../modules/selenium-standalone/install';
-import { CONFIG_FILE } from '../constants';
+import { CONFIG_FILE, CONFIG_GROUPS } from '../constants';
 
 let optionDefinitions;
 
@@ -30,7 +30,7 @@ export default (argv) => {
     */
     const options = commandLineArgs(optionDefinitions, { argv });
 
-    seleniumInstall(options);
+    seleniumInstall(options[CONFIG_GROUPS.selenium]);
   } catch (error) {
     logAndThrowError(error);
   }
