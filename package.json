@@ -4,7 +4,7 @@
   "description": "Node JS module to optimize UI and API automation using BDD practices.",
   "author": "Abhishek Das <i.abhishek.dass@gmail.com>",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "index.js",
   "bin": {
     "optimus": "./bin/optimus.js"
   },
