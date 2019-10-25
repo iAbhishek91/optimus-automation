@@ -1,6 +1,6 @@
 import request from './makeHttpRequest';
 
-export default class {
+class ApiResponseProcessor {
   constructor() {
     this.request = request;
   }
@@ -18,6 +18,7 @@ export default class {
   }
 }
 
+export default ApiResponseProcessor;
 // export const getStatus = async (
 //   uri,
 //   headers,
