@@ -3,6 +3,7 @@ import fs from 'fs';
 import config from '../config';
 import { errorLog, plainLog as logger } from '../../logger';
 import { formattedTimezone } from '../../../utility/date';
+import createDirIfNotExists from '../../createDirIfNotExists';
 
 const {
   screenshotDirectory,
@@ -17,6 +18,11 @@ export async function saveScreenshot(filename) {
   );
 
   try {
+    // In case the output directory mentioned in the options is not available, it will create one.
+    createDirIfNotExists(screenshotDirectory);
+
+    // Create and save screenshot on the filesystem.
+    // This screenshot is taken using webdriverIO API.
     await browser.saveScreenshot(filePath);
 
     logger.info(`Action[saveScreenshot]: ${filePath}`);
@@ -29,7 +35,7 @@ export async function saveScreenshot(filename) {
 
 export async function attachScreenshot(filename) {
   const filePath = await saveScreenshot(filename);
-  const data = fs.readFileSync(filePath);
+  const screenshot = fs.readFileSync(filePath);
 
-  this.attach(data, 'image/png');
+  this.attach(screenshot, 'image/png');
 }

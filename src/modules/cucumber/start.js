@@ -1,7 +1,8 @@
 import { spawn } from 'cross-spawn';
 import path from 'path';
 import getCucumberOptions from './getCucumberOptions';
-import createOutputDir from './createOutputDir';
+import createDirIfNotExists from '../createDirIfNotExists';
+import { CONFIG_GROUPS } from '../../constants';
 import { logger } from '../logger';
 
 const cucumber = path.join('node_modules', '.bin', 'cucumber-js');
@@ -10,7 +11,8 @@ export default (options) => {
   const cucumberOptions = getCucumberOptions(options);
 
   // In case the output directory mentioned in the options is not available, it will create one.
-  createOutputDir(options);
+  const { outputDir } = options[CONFIG_GROUPS.framework];
+  createDirIfNotExists(outputDir);
 
   logger.data(
     `\nCUCUMBER OPTIONS:
