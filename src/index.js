@@ -58,4 +58,4 @@ export const {
 //   request,
 // };
 
-export const request = new ApiResponseProcesser();
+module.exports.request = new ApiResponseProcesser();
