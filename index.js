@@ -1,8 +1,8 @@
 const loggers = require('./dist/modules/logger');
-const { actions } = require('./dist/modules/webdriverio/actions');
+const actions = require('./dist/modules/webdriverio/actions');
 const apiResponseProcesser = require('./dist/modules/request/apiResponseProcesser');
 const request = require('./dist/modules/request/makeHttpRequest');
-const { utilities } = require('./dist/utility');
+const utilities = require('./dist/utility');
 
 module.exports.actions = { ...actions };
 
