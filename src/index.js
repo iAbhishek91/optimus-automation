@@ -29,7 +29,7 @@ export const {
 
 export const {
   logger,
-  plainLog,
+  childProcessLog,
   errorLog,
 } = loggers;
 

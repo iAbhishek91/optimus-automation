@@ -76,7 +76,7 @@ export const logger = createLogger({
 
 
 // This logger is used in the child process.
-export const plainLog = createLogger({
+export const childProcessLog = createLogger({
   format: combine(
     plainLoggerFormat,
   ),
