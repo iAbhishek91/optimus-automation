@@ -13,15 +13,16 @@ import appendUrl from './appendUrl';
 import findElements from './findElements';
 import waitUntilURL from './waitUntilURL';
 import refreshUntilLoad from './refreshUntilLoad';
-import * as screenshot from './screenshot';
+import { saveScreenshot, attachScreenshot } from './screenshot';
 
 const getUrl = async () => browser.getUrl();
 const refresh = async () => browser.refresh();
 const getElementCount = async (locator) => (await findElements(locator)).length;
 
-// eslint-disable-next-line import/prefer-default-export
-export const actions = {
-  ...screenshot,
+
+export {
+  saveScreenshot,
+  attachScreenshot,
   isExisting,
   isDisplayed,
   click,
