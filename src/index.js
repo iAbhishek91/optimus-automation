@@ -1,7 +1,6 @@
 import * as loggers from './modules/logger';
 import actionLib from './modules/webdriverio/actions';
-import request from './modules/request';
-import * as apiResponseProcesser from './modules/request/apiResponseProcesser';
+import ApiResponseProcesser from './modules/request/ApiResponseProcesser';
 import utilityLib from './utility';
 
 export const {
@@ -33,11 +32,11 @@ export const {
   errorLog,
 } = loggers;
 
-export const {
-  getBody,
-  getHeaders,
-  getStatus,
-} = apiResponseProcesser;
+// export const {
+//   getBody,
+//   getHeaders,
+//   getStatus,
+// } = apiResponseProcesser;
 
 export const {
   mkdir,
@@ -55,6 +54,8 @@ export const {
   isBoolean,
 } = utilityLib;
 
-export {
-  request,
-};
+// export {
+//   request,
+// };
+
+export const request = new ApiResponseProcesser();
