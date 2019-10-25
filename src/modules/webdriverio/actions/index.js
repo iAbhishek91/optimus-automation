@@ -19,7 +19,8 @@ const getUrl = async () => browser.getUrl();
 const refresh = async () => browser.refresh();
 const getElementCount = async (locator) => (await findElements(locator)).length;
 
-export default {
+// eslint-disable-next-line import/prefer-default-export
+export const actions = {
   ...screenshot,
   isExisting,
   isDisplayed,

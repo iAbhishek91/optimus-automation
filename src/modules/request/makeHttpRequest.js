@@ -8,7 +8,8 @@ import request from 'request';
  * @param {String} method default to 'POST', mention any http method
  * @returns Promise, resolves to the response in javascript object format else rejects with error.
  */
-export default (uri, headers, body, method = 'POST') => (
+// eslint-disable-next-line import/prefer-default-export
+export const makeHTTPRequest = (uri, headers, body, method = 'POST') => (
   new Promise((resolve, reject) => {
     request({
       uri,

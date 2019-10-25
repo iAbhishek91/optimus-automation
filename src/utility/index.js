@@ -6,7 +6,8 @@ import sleep from './sleep';
 import * as validateDatatype from './validateDatatype';
 import writeFile from './writeFile';
 
-export default {
+// eslint-disable-next-line import/prefer-default-export
+export const utilities = {
   ...array,
   ...date,
   ...string,
