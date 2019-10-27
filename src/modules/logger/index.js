@@ -45,7 +45,7 @@ export const logger = (function logger() {
     transports: _transports,
   });
 
-  logger.add(new transports.Console({
+  winstonLogger.add(new transports.Console({
     format: combine(
       format.label(labelObj),
       format.timestamp(),
