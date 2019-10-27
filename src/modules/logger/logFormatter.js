@@ -54,6 +54,22 @@ export const loggerFormat = printf(
 );
 
 
+export const loggerFormatNoColor = printf(
+  ({
+    message,
+    timestamp,
+    label,
+    level,
+  }) => {
+    if (label) {
+      return `${timestamp} ${level} ${label}: ${message}`;
+    }
+
+    return `${timestamp} ${level}: ${message}`;
+  },
+);
+
+
 export const plainLoggerFormat = printf(
   ({ message }) => message,
 );

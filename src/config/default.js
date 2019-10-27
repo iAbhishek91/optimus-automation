@@ -42,5 +42,5 @@ export const defaultWebdriverIOOptions = {
 // below configuration is used by logger module
 export const defaultLoggerOptions = {
   label: undefined,
-  logDir: undefined,
+  logDir: 'logs',
 };

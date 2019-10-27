@@ -6,7 +6,7 @@ import {
 import { LOG_LEVELS } from './constants';
 import { CONFIG_GROUPS } from '../../constants';
 import config from '../config';
-import { loggerFormat } from './logFormatter';
+import { loggerFormat, loggerFormatNoColor } from './logFormatter';
 
 
 // The below function is a IIFE which returns a winston logger object.
@@ -19,9 +19,7 @@ export const logger = (function logger() {
   } = config(CONFIG_GROUPS.logger);
 
   // Define transport based on the config
-  const _transports = [
-    new transports.Console(),
-  ];
+  const _transports = [];
 
   // Logs are saved, if directory configured in optimusrc.
   if (logDir && typeof logDir === 'string') {
@@ -37,15 +35,25 @@ export const logger = (function logger() {
   // Define labelObj based on the config
   const labelObj = label ? { label } : undefined;
 
-  return createLogger({
+  const winstonLogger = createLogger({
     levels,
     format: combine(
       format.label(labelObj),
-      format.timestamp({ format: 'MMM-DD HH:mm:ss' }),
-      loggerFormat,
+      format.timestamp(),
+      loggerFormatNoColor,
     ),
     transports: _transports,
   });
+
+  logger.add(new transports.Console({
+    format: combine(
+      format.label(labelObj),
+      format.timestamp(),
+      loggerFormat,
+    ),
+  }));
+
+  return winstonLogger;
 }());
 
 
