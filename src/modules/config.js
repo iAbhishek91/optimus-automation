@@ -66,7 +66,7 @@ export default (configGroup) => {
     .call(global, configGroup);
 
   // If loaded do nothing and return the loaded value.
-  if (isRequestedConfigGroupLoaded) return global.configGroup;
+  if (isRequestedConfigGroupLoaded) return global[configGroup];
 
   // Else config is loaded using "loadConfigIfUndefined()" function and return
   return loadConfigIfUndefined(configGroup);
