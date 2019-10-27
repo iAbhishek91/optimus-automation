@@ -34,5 +34,3 @@ export const LOG_LEVELS = {
     info: ANSI_BG_CYAN,
   },
 };
-
-export const LOG_DIRECTORY_NAME = 'logs';
