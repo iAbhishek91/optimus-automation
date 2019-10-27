@@ -9,15 +9,15 @@ import config from '../config';
 import { loggerFormat } from './logFormatter';
 
 
-const { combine } = format;
-const { levels } = LOG_LEVELS;
-const {
-  label,
-  logDir,
-} = config(CONFIG_GROUPS.logger);
+// The below function is a IIFE which returns a winston logger object.
+export const logger = (function logger() {
+  const { combine } = format;
+  const { levels } = LOG_LEVELS;
+  const {
+    label,
+    logDir,
+  } = config(CONFIG_GROUPS.logger);
 
-
-export const logger = () => {
   // Define transport based on the config
   const _transports = [
     new transports.Console(),
@@ -46,7 +46,7 @@ export const logger = () => {
     ),
     transports: _transports,
   });
-};
+}());
 
 
 // These functions are exported from the internal logger module.
