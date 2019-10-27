@@ -1,13 +1,16 @@
 import path from 'path';
 import fs from 'fs';
-import config from '../config';
+import config from '../../config';
 import { errorLog, childProcessLog as logger } from '../../logger';
 import { formattedTimezone } from '../../../utility/date';
 import createDirIfNotExists from '../../createDirIfNotExists';
+import { CONFIG_GROUPS } from '../../../constants';
+
 
 const {
   screenshotDirectory,
-} = config();
+} = config(CONFIG_GROUPS.webdriverIO);
+
 
 export async function saveScreenshot(filename) {
   const timezone = formattedTimezone();

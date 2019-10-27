@@ -1,8 +1,11 @@
-import config from '../config';
+import config from '../../config';
+import { CONFIG_GROUPS } from '../../../constants';
+
 
 const {
   defaultIsExistingPauseExecutionTimeoutInMs,
-} = config();
+} = config(CONFIG_GROUPS.webdriverIO);
+
 
 export default async (locator, timeout = defaultIsExistingPauseExecutionTimeoutInMs) => {
   let doesElementExist = false;

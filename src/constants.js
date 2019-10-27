@@ -6,6 +6,7 @@ export const CONFIG_GROUPS = {
   selenium: 'seleniumOptions',
   cucumber: 'cucumberOptions',
   webdriverIO: 'webdriverIOOptions',
+  logger: 'loggerOptions',
 };
 
 export const IS_YN = { Y: 'yes', N: 'no' };

@@ -1,8 +1,9 @@
-import config from '../config';
+import config from '../../config';
+import { CONFIG_GROUPS } from '../../../constants';
 
 const {
   defaultWaitForElementToExistsInMs,
-} = config();
+} = config(CONFIG_GROUPS.webdriverIO);
 
 export default async (pagePathName, timeout = defaultWaitForElementToExistsInMs) => {
   try {

@@ -1,7 +1,7 @@
 import commandLineArgs from 'command-line-args';
 import { existsSync } from 'fs';
 import parseStartTestConfig from '../config/parseStartTestConfig';
-import { _logger as logger } from '../modules/logger/logBuilder';
+import { logger } from '../modules/logger/logBuilder';
 import logAndThrowError from '../logAndThrowError';
 import startCucumber from '../modules/cucumber/start';
 import cucumberEventListener from '../modules/cucumber/eventListener';

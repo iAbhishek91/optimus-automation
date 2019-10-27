@@ -1,9 +1,11 @@
-import config from '../config';
+import config from '../../config';
 import selectByAttribute from './selectByAttribute';
+import { CONFIG_GROUPS } from '../../../constants';
+
 
 const {
   defaultWaitForElementToExistsInMs,
-} = config();
+} = config(CONFIG_GROUPS.webdriverIO);
 
 export default async (
   locator,

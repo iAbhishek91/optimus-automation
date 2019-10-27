@@ -38,3 +38,9 @@ export const defaultWebdriverIOOptions = {
   defaultPageReloadCount: 5,
   screenshotDirectory: path.join('output', 'screenshot'),
 };
+
+// below configuration is used by logger module
+export const defaultLoggerOptions = {
+  label: undefined,
+  logDir: undefined,
+};

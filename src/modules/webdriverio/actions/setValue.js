@@ -1,10 +1,13 @@
-import config from '../config';
+import config from '../../config';
 import { errorLog, childProcessLog as logger } from '../../logger';
 import { actionLogTemplate } from '../../logger/logTemplates';
+import { CONFIG_GROUPS } from '../../../constants';
+
 
 const {
   defaultWaitForElementToExistsInMs,
-} = config();
+} = config(CONFIG_GROUPS.webdriverIO);
+
 
 export default async (locater, value, timeout = defaultWaitForElementToExistsInMs) => {
   try {

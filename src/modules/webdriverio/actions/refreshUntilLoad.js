@@ -1,9 +1,11 @@
-import config from '../config';
+import config from '../../config';
 import isDisplayed from './isDisplayed';
+import { CONFIG_GROUPS } from '../../../constants';
+
 
 const {
   defaultPageReloadCount,
-} = config();
+} = config(CONFIG_GROUPS.webdriverIO);
 
 export default async (locator, reloadCount = defaultPageReloadCount) => {
   const isElementDisplayed = false;

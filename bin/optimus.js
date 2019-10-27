@@ -7,7 +7,7 @@ const report = require('../dist/cli/report').default;
 const seleniumInstall = require('../dist/cli/selenium-install').default;
 const seleniumStart = require('../dist/cli/selenium-start').default;
 const { validCommands, usageDefinition } = require('../dist/cli/cliUsageDefinitions');
-const { _logger: { logger } } = require('../dist/modules/logger/logBuilder');
+const { logger } = require('../dist/modules/logger/logBuilder');
 
 /*
   How the below object is created?
