@@ -24,7 +24,7 @@ export const logger = (function logger() {
   ];
 
   // Logs are saved, if directory configured in optimusrc.
-  if (!logDir && typeof logDir === 'string') {
+  if (logDir && typeof logDir === 'string') {
     _transports.push(
       new transports.File({ filename: `${logDir}/execution.log` }),
       new transports.File({
