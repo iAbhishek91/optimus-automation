@@ -3,7 +3,7 @@ import path from 'path';
 import getCucumberOptions from './getCucumberOptions';
 import createDirIfNotExists from '../createDirIfNotExists';
 import { CONFIG_GROUPS } from '../../constants';
-import { logger } from '../logger';
+import { logger } from '../logger/logBuilder';
 
 const cucumber = path.join('node_modules', '.bin', 'cucumber-js');
 

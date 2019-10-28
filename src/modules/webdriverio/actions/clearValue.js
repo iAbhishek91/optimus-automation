@@ -1,5 +1,5 @@
 import config from '../../config';
-import { errorLog, childProcessLog as logger } from '../../logger';
+import { errorLog, childProcessLog as logger } from '../../logger/logBuilder';
 import { actionLogTemplate } from '../../logger/logTemplates';
 import { CONFIG_GROUPS } from '../../../constants';
 

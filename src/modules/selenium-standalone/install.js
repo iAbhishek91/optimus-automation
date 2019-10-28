@@ -1,5 +1,5 @@
 import selenium from 'selenium-standalone';
-import { logger } from '../logger';
+import { logger } from '../logger/logBuilder';
 import logAndThrowError from '../../logAndThrowError';
 
 const progressCB = (totalLength, progressLength) => {

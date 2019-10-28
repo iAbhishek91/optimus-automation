@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import config from '../../config';
-import { errorLog, childProcessLog as logger } from '../../logger';
+import { errorLog, childProcessLog as logger } from '../../logger/logBuilder';
 import { formattedTimezone } from '../../../utility/date';
 import createDirIfNotExists from '../../createDirIfNotExists';
 import { CONFIG_GROUPS } from '../../../constants';

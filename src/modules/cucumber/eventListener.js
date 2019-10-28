@@ -1,4 +1,4 @@
-import { logger } from '../logger';
+import { logger } from '../logger/logBuilder';
 
 /**
  * @description this function defines all the event listener for cucumber

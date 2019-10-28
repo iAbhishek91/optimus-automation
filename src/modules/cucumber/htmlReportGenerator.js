@@ -1,6 +1,6 @@
 import reporter from 'cucumber-html-reporter';
 import path from 'path';
-import { logger } from '../logger';
+import { logger } from '../logger/logBuilder';
 import { formattedTimezone } from '../../utility/date';
 
 

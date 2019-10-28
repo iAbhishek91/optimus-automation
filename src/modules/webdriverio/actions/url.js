@@ -1,4 +1,4 @@
-import { errorLog, childProcessLog as logger } from '../../logger';
+import { errorLog, childProcessLog as logger } from '../../logger/logBuilder';
 import { isUndefined } from '../../../utility/validateDatatype';
 
 export default async (appUrl, pathname = null) => {
