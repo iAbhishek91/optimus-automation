@@ -39,7 +39,7 @@ export const logger = (function logger() {
     levels,
     format: combine(
       format.label(labelObj),
-      format.timestamp(),
+      format.timestamp({ format: 'MMM-DD HH:mm:ss' }),
       loggerFormatNoColor,
     ),
     transports: _transports,
