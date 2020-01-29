@@ -87,3 +87,7 @@ Learn at the `request` simple implementation from [/src/modules/request](https:/
 These module also be useful to learn how CLI logs are beatified without using any module. Color format and categorizing different type of logs.
 
 Learn at the `request` simple implementation from [/src/modules/request](https://github.com/iAbhishek91/optimus-automation/blob/master/src/modules/request/index.js).
+
+* **OWASP ZAP** in-built. [ZAPROXY](https://www.npmjs.com/package/zaproxy) to control ZAP using APIs. This module can be useful for the following - if you want to know how ZAP works along with API, how to automate ZAP and bring security testing in the CI pipeline. Also you can consume this optimus-automation from npm and start using it directly.
+
+Learn about ZAP from our documentation - [LEARN-ZAP](https://github.com/iAbhishek91/optimus-automation/blob/master/src/modules/zaproxy/LEARN-ZAP.md)
