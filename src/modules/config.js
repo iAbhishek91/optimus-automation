@@ -10,7 +10,7 @@ import {
 const noConfigErrMsg = `No configuration file found! Please define "${CONFIG_FILE}" at root.`;
 
 
-const configGroupAndDefaultMapping = (configGroup) => {
+const _configGroupAndDefaultMapping = (configGroup) => {
   switch (configGroup) {
     case CONFIG_GROUPS.webdriverIO: return defaultWebdriverIOOptions;
     case CONFIG_GROUPS.logger: return defaultLoggerOptions;
@@ -20,7 +20,7 @@ const configGroupAndDefaultMapping = (configGroup) => {
 };
 
 
-const loadConfigIfUndefined = (configGroup) => {
+const _loadConfigIfUndefined = (configGroup) => {
   let configFromOptimusrc;
   let returnConfigGroupObj;
 
@@ -38,7 +38,7 @@ const loadConfigIfUndefined = (configGroup) => {
     .call(configFromOptimusrc, configGroup);
 
   // Get default value of the config group
-  const defaultOptions = configGroupAndDefaultMapping(configGroup);
+  const defaultOptions = _configGroupAndDefaultMapping(configGroup);
 
   // If requested config group is not defined in optimusrc, return default config values.
   if (!isRequestedConfigGroupDefined) {
@@ -60,6 +60,7 @@ const loadConfigIfUndefined = (configGroup) => {
 
 export default (configGroup) => {
   // Verify requested CONFIG_GROUP is already loaded.
+  // learn caching
   const isRequestedConfigGroupLoaded = Object
     .prototype
     .hasOwnProperty
@@ -69,5 +70,5 @@ export default (configGroup) => {
   if (isRequestedConfigGroupLoaded) return global[configGroup];
 
   // Else config is loaded using "loadConfigIfUndefined()" function and return
-  return loadConfigIfUndefined(configGroup);
+  return _loadConfigIfUndefined(configGroup);
 };
