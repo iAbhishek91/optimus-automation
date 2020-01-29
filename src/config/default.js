@@ -44,3 +44,9 @@ export const defaultLoggerOptions = {
   label: undefined,
   logDir: 'logs',
 };
+
+// below configuration is used by ZAPPROXY
+export const defaultZaproxyOptions = {
+  apiKey: null,
+  proxy: 'http://localhost:8080',
+};

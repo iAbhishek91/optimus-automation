@@ -7,6 +7,7 @@ export const CONFIG_GROUPS = {
   cucumber: 'cucumberOptions',
   webdriverIO: 'webdriverIOOptions',
   logger: 'loggerOptions',
+  zapProxy: 'zaproxyOptions',
 };
 
 export const IS_YN = { Y: 'yes', N: 'no' };
