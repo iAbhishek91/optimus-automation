@@ -35,3 +35,5 @@ In my words, in short workings of ZAP, ZAP sits in between browser and applicati
 
 - **How to configure the proxy, to use ZAP?** Configure browser proxy to point to ZAP' URL.
 - **What if my browser is already configured with a proxy, then where do I configure ZAP's proxy?** - this is slightly complex scenario. The concept is known as *Proxy chain*. In this case, the already configured browser proxy should be replaced with ZAP URL, and configure ZAP to proxy to the browser proxy. Please use inbuilt function `setProxyChain(<params>)`.
+- **What is the sequence of steps** - please refer `src/modules/zaproxy/callSequenceZap.example.js`. This is kept only for reference.
+- **How to integrate with selenium tests** - quite easy the function that are exposed from optimus-automation can be invoked at different stages. In Before hook do all the prerequisite: setproxychain if required, setSession if required. and once the selenium test are done start Active scan, wait for it and generated report. The Post actions can be done in after hook of selenium.
